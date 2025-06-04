@@ -1,7 +1,9 @@
 import UIKit
+import GoogleMaps 
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,13 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     reactNativeFactory = factory
 
     window = UIWindow(frame: UIScreen.main.bounds)
-
+    GMSServices.provideAPIKey("AIzaSyA4P_P-3L1i-vFRZG7SfI8qd3_oS0n0wYs")
+    // [GMSServices provideAPIKey: @"AIzaSyA4P_P-3L1i-vFRZG7SfI8qd3_oS0n0wYs"]
     factory.startReactNative(
       withModuleName: "cheese",
       in: window,
       launchOptions: launchOptions
     )
-
     return true
   }
 }
