@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { StyleSheet, Dimensions } from 'react-native'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import { StyleSheet, View } from 'react-native'
+import MapView, { PROVIDER_GOOGLE, Region, Marker } from 'react-native-maps'
 
 interface MarkerData {
   id: string
@@ -13,12 +13,14 @@ interface MarkerData {
 }
 
 const GoogleMapsScreen = () => {
-  const [region, setRegion] = useState({
+  const [region, setRegion] = useState<Region>({
     latitude: 37.5326,
     longitude: 127.024612,
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   })
+
+  const [markers, setMarkers] = useState<MarkerData[]>([])
 
   const handleMapPress = (event: any) => {
     const { coordinate } = event.nativeEvent
@@ -30,26 +32,33 @@ const GoogleMapsScreen = () => {
         6,
       )}, 경도: ${coordinate.longitude.toFixed(6)}`,
     }
+    setMarkers(prev => [...prev, newMarker])
   }
 
   return (
-    <MapView
-      style={styles.map}
-      initialRegion={region}
-      onPress={handleMapPress}
-      showsUserLocation={true}
-      showsMyLocationButton={true}
-      provider={PROVIDER_GOOGLE}
-      mapType="standard"
-    />
+    <View style={styles.container}>
+      <MapView
+        style={styles.map} // styles -> style로 수정
+        initialRegion={region}
+        provider={PROVIDER_GOOGLE}
+        onPress={handleMapPress}
+        showsUserLocation={true}
+        showsMyLocationButton={true}
+        mapType="standard"
+        onMapReady={() => console.log('Map is ready')} // 디버깅용
+      ></MapView>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  map: {
+  container: {
     width: '100%',
-    aspectRatio: 402 / 311,
+    flex: 1,
     overflow: 'hidden',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 })
 

@@ -1,5 +1,6 @@
 import { colors } from '@/constants/colors'
 import useAnimation from '@/hooks/useAnimation'
+import useDarkmode from '@/hooks/useDarkmode'
 import { useMemo } from 'react'
 import {
   FlatList,
@@ -41,7 +42,7 @@ const LocationData = [
 ]
 
 export default function MainLocation(): React.JSX.Element {
-  const darkMode = useColorScheme() === 'dark'
+  const darkMode = useDarkmode()
   const styles = useMemo(() => customStyles({ darkMode }), [])
 
   const { animatedStyle } = useAnimation()
