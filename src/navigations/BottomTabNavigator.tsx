@@ -3,7 +3,10 @@ import PhotoBookScreen from '@/screens/PhotoBookScreen'
 import PhotoScreen from '@/screens/PhotoScreen'
 import RecommendScreen from '@/screens/RecommendScreen'
 import SearchScreen from '@/screens/SearchScreen'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import {
+  BottomTabNavigationProp,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs'
 import HomeIcon from '@/assets/icons/CHEESE_HOME.svg'
 import SearchIcon from '@/assets/icons/CHEESE_CATALOG.svg'
 import PhotoIcon from '@/assets/icons/CHEESE_PHOTO.svg'
@@ -23,7 +26,7 @@ const BOTTOM_TAB_CONSTANTS = {
 
 export type BottomTabParamList = {
   [BOTTOM_TAB_CONSTANTS.HomeScreen]: undefined
-  [BOTTOM_TAB_CONSTANTS.SearchScreen]: undefined
+  [BOTTOM_TAB_CONSTANTS.SearchScreen]: { title: string } | undefined // 파라미터 추가
   [BOTTOM_TAB_CONSTANTS.PhotoScreen]: undefined
   [BOTTOM_TAB_CONSTANTS.RecommendScreen]: undefined
   [BOTTOM_TAB_CONSTANTS.PhotoBookScreen]: undefined

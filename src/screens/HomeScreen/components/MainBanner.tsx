@@ -7,11 +7,10 @@ import Animated, {
   withDelay,
 } from 'react-native-reanimated'
 import { useEffect } from 'react'
-import CheeseLogo from '@/assets/icons/CHEESE_LOGO.svg'
-import CheeseUser from '@/assets/icons/CHEESE_USER.svg'
 import { fonts } from '@/constants/fonts'
 import { colors } from '@/constants/colors'
 import useDarkmode from '@/hooks/useDarkmode'
+import CheeseHeader from '@/components/layout/Header'
 
 export default function MainBanner(): React.JSX.Element {
   const safeAreaInsets = useSafeAreaInsets()
@@ -52,9 +51,8 @@ export default function MainBanner(): React.JSX.Element {
         resizeMode="contain"
         source={require('@/assets/images/CHEESE_BG_1.png')}
       />
+      <CheeseHeader />
       {/* <HomeBannerMap /> */}
-      <CheeseLogo style={styles.logo} color={color.active} />
-      <CheeseUser style={styles.user} color={color.text.primary} />
       <View style={styles.textContainer}>
         <Animated.Text style={[styles.title, titleAnimatedStyle]}>
           내 주변
@@ -66,7 +64,6 @@ export default function MainBanner(): React.JSX.Element {
     </View>
   )
 }
-
 function customStyles(safeAreaInsets: EdgeInsets, isDarkMode: boolean) {
   const color = colors(isDarkMode)
   return StyleSheet.create({

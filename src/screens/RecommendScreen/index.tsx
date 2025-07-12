@@ -1,9 +1,11 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import SearchBottomSheet from '../SearchScreen/components/SearchBottomSheet'
 
 export default function RecommendScreen(): React.JSX.Element {
   return (
-    <View>
-      <Text>Recommend Screen</Text>
+    <View style={{ flex: 1 }}>
+      {/* 반드시 바텀시트 위쪽에 여유 공간 있어야 함 */}
+      <SearchBottomSheet />
     </View>
   )
 }
