@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet, Text, useColorScheme } from 'react-native'
+import { View, Image, StyleSheet } from 'react-native'
 import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context'
 import Animated, {
   useSharedValue,
@@ -6,6 +6,8 @@ import Animated, {
   withTiming,
   withDelay,
 } from 'react-native-reanimated'
+import LinearGradient from 'react-native-linear-gradient'
+
 import { useEffect } from 'react'
 import { fonts } from '@/constants/fonts'
 import { colors } from '@/constants/colors'
@@ -61,6 +63,11 @@ export default function MainBanner(): React.JSX.Element {
           네컷사진관 찾기
         </Animated.Text>
       </View>
+      <LinearGradient
+        colors={['rgba(45, 45, 45, 0.95)', 'rgba(0, 0, 0, 0.10)']}
+        start={{ x: 0.5, y: 0 }}
+        end={{ x: 0.5, y: 0.5 }}
+        style={{ position: 'absolute', inset: 0 }}></LinearGradient>
     </View>
   )
 }

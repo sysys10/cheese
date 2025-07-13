@@ -50,9 +50,8 @@ export default function MainSearchBar(): React.JSX.Element {
     <View
       style={{
         marginTop: 14,
-        paddingHorizontal: 16,
         width: '100%',
-        height: 40,
+        height: 36,
       }}>
       <Animated.View
         style={[

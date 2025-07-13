@@ -171,13 +171,13 @@ function customStyles(isDarkMode: boolean) {
       borderRadius: 20,
       padding: 16,
       marginBottom: 12,
-      shadowColor: 'rgba(200, 200, 200, 0.30)',
-      shadowOffset: {
-        width: 0,
-        height: 4,
-      },
-      shadowOpacity: 1,
-      shadowRadius: 10,
+      // shadowColor: 'rgba(200, 200, 200, 0.1)',
+      // shadowOffset: {
+      //   width: 0,
+      //   height: 2,
+      // },
+      // shadowOpacity: 1,
+      // shadowRadius: 20,
       elevation: 8,
     },
     studioHeader: {

@@ -1,9 +1,10 @@
 import { colors } from '@/constants/colors'
 import { fonts } from '@/constants/fonts'
 import useDarkmode from '@/hooks/useDarkmode'
-import { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useState, useEffect, useCallback } from 'react'
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useFocusEffect } from '@react-navigation/native'
 
 const AVAILABLE_LOCATION = ['잠실', '강남', '성수', '홍대']
 
@@ -12,16 +13,24 @@ interface CheeseBannerProps {
   isBottomSheetUp?: boolean
 }
 export default function CheeseBanner({
-  title = AVAILABLE_LOCATION.at(0),
+  title,
   isBottomSheetUp = false,
 }: CheeseBannerProps) {
   const isDarkMode = useDarkmode()
   const [activatedPlace, setActivatedPlace] = useState(title)
+  useFocusEffect(
+    useCallback(() => {
+      setActivatedPlace(title) // 선택된 장소 등록
+
+      return () => {}
+    }, [title]),
+  )
   const styles = customStyles(isDarkMode, isBottomSheetUp)
   return (
     <View style={styles.container}>
       {AVAILABLE_LOCATION.map(v => (
         <TouchableOpacity
+          key={v}
           onPress={() => {
             setActivatedPlace(v)
           }}>

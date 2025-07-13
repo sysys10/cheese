@@ -1,4 +1,4 @@
-import { ScrollView } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import MainBanner from './components/MainBanner'
 import MainSearchBar from './components/MainSearchBar'
 import MainLocation from './components/MainLocation'
@@ -10,7 +10,9 @@ export default function HomeScreen(): React.JSX.Element {
     <ScrollView
       style={{ flex: 1, backgroundColor: isDarkMode ? '#2D2D2D' : '#FBFBFB' }}>
       <MainBanner />
-      <MainSearchBar />
+      <View style={{ paddingHorizontal: 12 }}>
+        <MainSearchBar />
+      </View>
       <MainLocation />
       <MainRecommend />
     </ScrollView>
